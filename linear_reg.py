@@ -28,15 +28,14 @@ regr.fit(diabetes_X_train, diabetes_y_train)
 diabetes_y_pred = regr.predict(diabetes_X_test)
 
 
-file = open("results.txt","w")
+f = open("results.txt","w")
 
 # The coefficients
-print('Coefficients: \n', regr.coef_)
-file.write(regr.coef_)
+print('Coefficients: \n', regr.coef_, file=f)
+
 # The mean squared error
 print("Mean squared error: %.2f"
-      % mean_squared_error(diabetes_y_test, diabetes_y_pred))
-file.write(mean_squared_error(diabetes_y_test, diabetes_y_pred))
+      % mean_squared_error(diabetes_y_test, diabetes_y_pred), file=f)
+
 # Explained variance score: 1 is perfect prediction
-print('Variance score: %.2f' % r2_score(diabetes_y_test, diabetes_y_pred))
-file.write(r2_score(diabetes_y_test, diabetes_y_pred))
+print('Variance score: %.2f' % r2_score(diabetes_y_test, diabetes_y_pred), file=f)
